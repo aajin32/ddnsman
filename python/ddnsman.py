@@ -599,13 +599,13 @@ def main_menu_flow():
         if not cfg.get("access_key_id"):
             print("配置取消，退出")
             return
-        save_config(cfg)
         print("正在验证配置...")
         ok, err = verify_config(cfg)
         if not ok:
             print(f"❌ 配置验证失败: {err}")
             print("请重新运行脚本或手动编辑 ~/.alidns_config.json")
             return
+        save_config(cfg)
         print("✅ 配置验证通过")
 
     client = get_client(cfg)
